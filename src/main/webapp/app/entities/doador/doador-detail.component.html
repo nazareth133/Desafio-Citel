@@ -1,0 +1,96 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="doador">
+            <h2><span>Doador</span> {{ doador.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Nome</span></dt>
+                <dd>
+                    <span>{{ doador.nome }}</span>
+                </dd>
+                <dt><span>Cpf</span></dt>
+                <dd>
+                    <span>{{ doador.cpf }}</span>
+                </dd>
+                <dt><span>Rg</span></dt>
+                <dd>
+                    <span>{{ doador.rg }}</span>
+                </dd>
+                <dt><span>Data Nasc</span></dt>
+                <dd>
+                    <span>{{ doador.dataNasc }}</span>
+                </dd>
+                <dt><span>Sexo</span></dt>
+                <dd>
+                    <span>{{ doador.sexo }}</span>
+                </dd>
+                <dt><span>Mae</span></dt>
+                <dd>
+                    <span>{{ doador.mae }}</span>
+                </dd>
+                <dt><span>Pai</span></dt>
+                <dd>
+                    <span>{{ doador.pai }}</span>
+                </dd>
+                <dt><span>Email</span></dt>
+                <dd>
+                    <span>{{ doador.email }}</span>
+                </dd>
+                <dt><span>Cep</span></dt>
+                <dd>
+                    <span>{{ doador.cep }}</span>
+                </dd>
+                <dt><span>Endereco</span></dt>
+                <dd>
+                    <span>{{ doador.endereco }}</span>
+                </dd>
+                <dt><span>Numero</span></dt>
+                <dd>
+                    <span>{{ doador.numero }}</span>
+                </dd>
+                <dt><span>Bairro</span></dt>
+                <dd>
+                    <span>{{ doador.bairro }}</span>
+                </dd>
+                <dt><span>Cidade</span></dt>
+                <dd>
+                    <span>{{ doador.cidade }}</span>
+                </dd>
+                <dt><span>Estado</span></dt>
+                <dd>
+                    <span>{{ doador.estado }}</span>
+                </dd>
+                <dt><span>Telefone Fixo</span></dt>
+                <dd>
+                    <span>{{ doador.telefoneFixo }}</span>
+                </dd>
+                <dt><span>Celular</span></dt>
+                <dd>
+                    <span>{{ doador.celular }}</span>
+                </dd>
+                <dt><span>Altura</span></dt>
+                <dd>
+                    <span>{{ doador.altura }}</span>
+                </dd>
+                <dt><span>Peso</span></dt>
+                <dd>
+                    <span>{{ doador.peso }}</span>
+                </dd>
+                <dt><span>Tipo Sanguineo</span></dt>
+                <dd>
+                    <span>{{ doador.tipoSanguineo }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+        </div>
+    </div>
+</div>

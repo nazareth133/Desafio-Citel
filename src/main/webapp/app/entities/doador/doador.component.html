@@ -1,0 +1,115 @@
+<div>
+    <h2 id="page-heading">
+        <span>Doadors</span>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="Query">
+
+                    <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+                        <fa-icon icon="search"></fa-icon>
+                    </button>
+
+                    <button class="input-group-append btn btn-danger" (click)="search('')" *ngIf="currentSearch">
+                        <fa-icon icon="trash-alt"></fa-icon>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="doadors?.length === 0">
+        <span>No doadors found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="doadors && doadors.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span>ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="nome"><span>Nome</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="cpf"><span>Cpf</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="rg"><span>Rg</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="dataNasc"><span>Data Nasc</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="sexo"><span>Sexo</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="mae"><span>Mae</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="pai"><span>Pai</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="email"><span>Email</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="cep"><span>Cep</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="endereco"><span>Endereco</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="numero"><span>Numero</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="bairro"><span>Bairro</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="cidade"><span>Cidade</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="estado"><span>Estado</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="telefoneFixo"><span>Telefone Fixo</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="celular"><span>Celular</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="altura"><span>Altura</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="peso"><span>Peso</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="tipoSanguineo"><span>Tipo Sanguineo</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let doador of doadors ;trackBy: trackId">
+                    <td><a [routerLink]="['/doador', doador.id, 'view']">{{ doador.id }}</a></td>
+                    <td>{{ doador.nome }}</td>
+                    <td>{{ doador.cpf }}</td>
+                    <td>{{ doador.rg }}</td>
+                    <td>{{ doador.dataNasc }}</td>
+                    <td>{{ doador.sexo }}</td>
+                    <td>{{ doador.mae }}</td>
+                    <td>{{ doador.pai }}</td>
+                    <td>{{ doador.email }}</td>
+                    <td>{{ doador.cep }}</td>
+                    <td>{{ doador.endereco }}</td>
+                    <td>{{ doador.numero }}</td>
+                    <td>{{ doador.bairro }}</td>
+                    <td>{{ doador.cidade }}</td>
+                    <td>{{ doador.estado }}</td>
+                    <td>{{ doador.telefoneFixo }}</td>
+                    <td>{{ doador.celular }}</td>
+                    <td>{{ doador.altura }}</td>
+                    <td>{{ doador.peso }}</td>
+                    <td>{{ doador.tipoSanguineo }}</td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/doador', doador.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline">View</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="doadors && doadors.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+
+      
+    <label class="btn btn-default">
+        <input type="file" (change)="handleFileInput($event)" />
+      </label>
+      <button class="btn btn-success" [disabled]="fileToUpload == null" (click)="upload()">
+  Upload
+</button>
+
+
+</div>

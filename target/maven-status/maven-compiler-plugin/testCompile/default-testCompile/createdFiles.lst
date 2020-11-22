@@ -1,0 +1,6 @@
+com/citel/citelapp/web/rest/DoadorResourceIT.class
+com/citel/citelapp/repository/search/DoadorSearchRepositoryMockConfiguration.class
+com/citel/citelapp/service/dto/DoadorDTOTest.class
+com/citel/citelapp/repository/timezone/DateTimeWrapper_.class
+com/citel/citelapp/service/mapper/DoadorMapperTest.class
+com/citel/citelapp/domain/DoadorTest.class
