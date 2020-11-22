@@ -23,7 +23,7 @@ export class DoadorService {
   upload(file: any): Observable<HttpEvent<any>> {
    
     const formData: FormData = new FormData();
-    formData.append('file', file);
+    formData.append('file', JSON.stringify(file));
     
     return this.http.post<IDoador>(`${this.resourceUrl}/upload`, formData, { observe: 'response' });
   }

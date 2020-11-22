@@ -9,7 +9,7 @@
       "name": "spring.datasource.hikari",
       "type": "javax.sql.DataSource",
       "sourceType": "com.citel.citelapp.config.CloudDatabaseConfiguration",
-      "sourceMethod": "public javax.sql.DataSource dataSource() "
+      "sourceMethod": "dataSource()"
     }
   ],
   "properties": [],
